@@ -78,6 +78,7 @@ class DaikinApi:
 
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
             _LOGGER.debug("BEARER TYPE %s JSON: %s", method, options)
+            _LOGGER.debug("BEARER REQUEST HEADERS: %s", headers)
 
             func = functools.partial(requests.request, url=resourceUrl, method=method, headers=headers, data=options)
             try:
