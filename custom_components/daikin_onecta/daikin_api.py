@@ -103,10 +103,14 @@ class DaikinApi:
                 ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
 
             _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits)
+            _LOGGER.debug("BEARER RESPONSE HEADERS: %s", res.headers)
+
 
         if method == "GET" and res.status_code == 200:
             try:
-                return res.json()
+                data = res.json()
+                _LOGGER.debug("BEARER RESPONSE DATA: %s", data)
+                return data
             except Exception:
                 _LOGGER.error("RETRIEVE JSON FAILED: %s", res.text)
                 return False
